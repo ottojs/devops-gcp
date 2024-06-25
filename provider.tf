@@ -6,6 +6,7 @@
 # tofu init -upgrade
 
 terraform {
+  required_version = ">= 1.7"
   required_providers {
     local = {
       # https://registry.terraform.io/providers/hashicorp/local/latest/docs

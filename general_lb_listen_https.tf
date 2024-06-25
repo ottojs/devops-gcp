@@ -1,7 +1,7 @@
 
-#####################################
-##### Load Balancer - CDN HTTPS #####
-#####################################
+#################################
+##### Load Balancer - HTTPS #####
+#################################
 
 # URL Map
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_url_map

@@ -13,16 +13,16 @@
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudbuildv2_repository
 resource "google_cloudbuildv2_repository" "cdn" {
-  location          = var.region
   name              = var.cdn_repo_name
+  location          = var.region
   parent_connection = var.repo_provider
   remote_uri        = "${var.repo_url_prefix}/${var.cdn_repo_owner}/${var.cdn_repo_name}.git"
 }
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudbuild_trigger
 resource "google_cloudbuild_trigger" "cdn" {
-  name        = "pipeline-cdn"
-  description = "Pipeline CDN"
+  name        = "pipeline-${var.cdn_repo_name}"
+  description = "Pipeline ${var.cdn_repo_name}"
   location    = var.region
   # TODO: Check system-level service account
   service_account = "projects/${var.project_id}/serviceAccounts/${var.project_number}-compute@developer.gserviceaccount.com"
@@ -43,6 +43,11 @@ resource "google_cloudbuild_trigger" "cdn" {
   build {
     # 30min
     timeout = "1800s"
+
+    options {
+      machine_type = "E2_MEDIUM"
+      logging      = "CLOUD_LOGGING_ONLY"
+    }
 
     step {
       id   = "build"
