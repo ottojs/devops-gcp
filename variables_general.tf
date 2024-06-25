@@ -47,7 +47,7 @@ variable "container_registry" {
 
 variable "pipeline_build_container" {
   description = "Name of container image to use when building"
-  default     = "node:20.14.0-alpine3.20"
+  default     = "node:20.15.0-alpine3.20"
 }
 
 # WARNING: If you are deploying this for real applications, set this to "false"
