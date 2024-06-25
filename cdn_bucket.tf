@@ -16,6 +16,13 @@ resource "google_storage_bucket" "cdn" {
   uniform_bucket_level_access = true
   public_access_prevention    = "inherited" # "enforced"
   force_destroy               = var.allow_bucket_delete
+  versioning {
+    enabled = true
+  }
+  logging {
+    log_bucket = "gcp-logs-${var.project_id}"
+    log_object_prefix = "gcp-logs-${var.project_id}/${var.files_domain}"
+  }
 
   website {
     main_page_suffix = var.lb_page_index
