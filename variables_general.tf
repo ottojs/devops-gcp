@@ -30,6 +30,11 @@ variable "region" {
   default     = "us-central1"
 }
 
+variable "domain_root" {
+  description = "Root domain"
+  default     = "example.com"
+}
+
 variable "ssl_policy_name" {
   description = "TLS SSL Policy Name"
   default     = "tf-ssl-policy-project"
@@ -45,16 +50,24 @@ variable "pipeline_build_container" {
   default     = "node:20.14.0-alpine3.20"
 }
 
-variable "certificate_name" {
-  description = "Name of SSL/TLS Certificate"
-  default     = "cert-example-com"
+# WARNING: If you are deploying this for real applications, set this to "false"
+#          Otherwise, you are at risk of deleting all of your valuable data
+variable "allow_bucket_delete" {
+  description = "Allow bucket delete with files inside"
+  default     = false
 }
 
-variable "certificate_domains" {
-  description = "Domains of SSL/TLS Certificate"
-  default = [
-    "api.example.com",
-    "cdn.example.com",
-    "files.example.com",
-  ]
+variable "repo_provider" {
+  description = "Name of repo host"
+  default     = "github"
+}
+
+variable "repo_url_prefix" {
+  description = "Prefix for provider"
+  default     = "https://github.com"
+}
+
+variable "repo_branch" {
+  description = "Name of branch to use when building"
+  default     = "main"
 }

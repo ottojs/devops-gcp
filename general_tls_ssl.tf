@@ -25,9 +25,16 @@ resource "google_compute_ssl_policy" "project" {
 # https://console.cloud.google.com/security/ccm/list/lbCertificates
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_managed_ssl_certificate
 # See Also: google_compute_region_ssl_certificate
-resource "google_compute_managed_ssl_certificate" "project" {
-  name = var.certificate_name
+resource "google_compute_managed_ssl_certificate" "cdn" {
+  name = replace("cert-${var.cdn_domain}", ".", "-")
   managed {
-    domains = var.certificate_domains
+    domains = [var.cdn_domain]
   }
 }
+resource "google_compute_managed_ssl_certificate" "files" {
+  name = replace("cert-${var.files_domain}", ".", "-")
+  managed {
+    domains = [var.files_domain]
+  }
+}
+
