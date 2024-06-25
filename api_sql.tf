@@ -24,6 +24,7 @@ resource "google_sql_database" "apidb" {
 }
 
 # https://cloud.google.com/sql/docs/postgres/connect-overview
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance
 resource "google_sql_database_instance" "apidb_instance" {
   name                = "postgresql-${local.api_name}-instance"
   region              = var.region
@@ -44,6 +45,15 @@ resource "google_sql_database_instance" "apidb_instance" {
     disk_size    = 10
     disk_type    = "PD_SSD"
     pricing_plan = "PER_USE"
+    # https://cloud.google.com/sql/docs/postgres/flags#terraform
+    database_flags {
+      name  = "log_min_error_statement"
+      value = "error"
+    }
+    database_flags {
+      name  = "cloudsql.iam_authentication"
+      value = "on"
+    }
     backup_configuration {
       enabled                        = true
       start_time                     = "03:00"
