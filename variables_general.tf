@@ -50,11 +50,11 @@ variable "pipeline_build_container" {
   default     = "node:20.15.0-alpine3.20"
 }
 
-# WARNING: If you are deploying this for real applications, set this to "false"
+# WARNING: If you are deploying this for real applications, set this to true
 #          Otherwise, you are at risk of deleting all of your valuable data
-variable "allow_bucket_delete" {
-  description = "Allow bucket delete with files inside"
-  default     = false
+variable "deletion_protection" {
+  description = "Enable deletion protection on all resources?"
+  default     = true
 }
 
 variable "repo_provider" {

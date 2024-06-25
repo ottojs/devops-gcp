@@ -12,7 +12,7 @@ resource "google_storage_bucket" "logs" {
   storage_class               = "STANDARD"
   uniform_bucket_level_access = true
   public_access_prevention    = "enforced" # "inherited"
-  force_destroy               = var.allow_bucket_delete
+  force_destroy               = !var.deletion_protection
   versioning {
     enabled = true
   }
