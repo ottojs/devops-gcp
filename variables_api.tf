@@ -54,6 +54,10 @@ variable "api_envvars_plain" {
       value = "https://example.com,https://www.example.com,https://cdn.example.com"
     },
     {
+      name  = "REGISTER_CODE"
+      value = "1234"
+    },
+    {
       name  = "GCP_BUCKET_NAME"
       value = "cdn.example.com"
     },
