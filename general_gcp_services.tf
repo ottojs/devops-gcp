@@ -1,6 +1,6 @@
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_service
-resource "google_project_service" "general-artifactregistry" {
+resource "google_project_service" "general_artifactregistry" {
   project = var.project_id
   service = "artifactregistry.googleapis.com"
   timeouts {
@@ -11,7 +11,7 @@ resource "google_project_service" "general-artifactregistry" {
 }
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_service
-resource "google_project_service" "general-compute" {
+resource "google_project_service" "general_compute" {
   project = var.project_id
   service = "compute.googleapis.com"
   timeouts {

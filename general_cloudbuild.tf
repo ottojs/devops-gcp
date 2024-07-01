@@ -32,7 +32,7 @@ resource "google_project_iam_member" "cloudbuild_role_meshconfig" {
 
 # Secret Manager Secret Accessor
 # https://cloud.google.com/iam/docs/understanding-roles#secretmanager.secretAccessor
-resource "google_project_iam_member" "cloudbuild_secret_accessor" {
+resource "google_project_iam_member" "cloudbuild_role_secret_accessor" {
   project = var.project_id
   role    = "roles/secretmanager.secretAccessor"
   member  = "serviceAccount:${var.project_number}@cloudbuild.gserviceaccount.com"

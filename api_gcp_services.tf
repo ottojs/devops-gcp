@@ -1,6 +1,6 @@
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_service
-resource "google_project_service" "api-sqladmin" {
+resource "google_project_service" "api_sqladmin" {
   project = var.project_id
   service = "sqladmin.googleapis.com"
   timeouts {

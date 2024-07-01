@@ -1,8 +1,8 @@
 
-# Load Secret: DB Password
-data "google_secret_manager_secret_version" "apidb_loader" {
-  secret = "api-db-user-password"
-}
+# # Load Secret: DB Password
+# data "google_secret_manager_secret_version" "apidb_loader" {
+#   secret = "api-db-user-password"
+# }
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_user
 resource "google_sql_user" "api_dbuser" {
@@ -10,7 +10,8 @@ resource "google_sql_user" "api_dbuser" {
   instance = google_sql_database_instance.apidb_instance.name
   # ONLY FOR MySQL
   # host   = "example.com"
-  password = data.google_secret_manager_secret_version.apidb_loader.secret_data
+  #password = data.google_secret_manager_secret_version.apidb_loader.secret_data
+  password = random_password.apidb.result
 }
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database
@@ -21,6 +22,9 @@ resource "google_sql_database" "apidb" {
   charset         = "UTF8"
   collation       = "en_US.UTF8"
   deletion_policy = local.deletion_policy
+  depends_on = [
+    google_sql_user.api_dbuser
+  ]
 }
 
 # https://cloud.google.com/sql/docs/postgres/connect-overview
