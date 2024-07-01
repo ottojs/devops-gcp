@@ -50,6 +50,25 @@ resource "google_cloudbuild_trigger" "cdn" {
     }
 
     step {
+      id   = "install"
+      name = var.pipeline_build_container
+      args = [
+        "npm",
+        "ci",
+      ]
+    }
+
+    step {
+      id   = "config"
+      name = "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
+      entrypoint = "/bin/bash"
+      args = [
+        "-c",
+        "/bin/echo -e 'VITE_API_URL=https://api.${var.domain_root}\nVITE_CDN_URL=https://cdn.${var.domain_root}' > .env.production",
+      ]
+    }
+
+    step {
       id   = "build"
       name = var.pipeline_build_container
       args = [
