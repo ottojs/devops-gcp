@@ -8,7 +8,7 @@
 resource "google_compute_url_map" "lb_https" {
   name        = "tf-lb-https-url-map"
   description = "HTTPS Service Proxy - URL Map"
-  # default_service = google_compute_backend_bucket.cdn_backend_bucket.id
+  # default_service = google_compute_backend_bucket.cdn.id
   # Send to Google if using naked IP or unspecified domain
   default_url_redirect {
     https_redirect         = true
@@ -25,7 +25,7 @@ resource "google_compute_url_map" "lb_https" {
   }
   path_matcher {
     name            = "cdn"
-    default_service = google_compute_backend_bucket.cdn_backend_bucket.id
+    default_service = google_compute_backend_bucket.cdn.id
   }
   host_rule {
     hosts        = ["files.${var.domain_root}"]
@@ -33,7 +33,7 @@ resource "google_compute_url_map" "lb_https" {
   }
   path_matcher {
     name            = "files"
-    default_service = google_compute_backend_bucket.files_backend_bucket.id
+    default_service = google_compute_backend_bucket.files.id
   }
 }
 

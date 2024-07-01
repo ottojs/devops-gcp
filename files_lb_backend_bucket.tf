@@ -4,7 +4,7 @@
 
 # Backend Bucket
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_backend_bucket
-resource "google_compute_backend_bucket" "files_backend_bucket" {
+resource "google_compute_backend_bucket" "files" {
   name        = "tf-lb-backend-bucket-files"
   description = "Contains static resources for file uploads"
   bucket_name = google_storage_bucket.files.name

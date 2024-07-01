@@ -59,8 +59,8 @@ resource "google_cloudbuild_trigger" "cdn" {
     }
 
     step {
-      id   = "config"
-      name = "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
+      id         = "config"
+      name       = "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
       entrypoint = "/bin/bash"
       args = [
         "-c",
