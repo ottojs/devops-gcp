@@ -7,6 +7,61 @@
 # that allows for customizations in these variable files unless the changes
 # should be applied to all projects for reasons like security, performance, etc.
 
+locals {
+  # Environment Variables (Plain-Text)
+  api_envvars_plain = [
+    {
+      name  = "NODE_ENV"
+      value = "production"
+    },
+    {
+      name  = "CORS_ALLOWED_ORIGINS"
+      value = "https://example.com,https://www.example.com,https://cdn.example.com"
+    },
+    {
+      name  = "GCP_BUCKET_NAME"
+      value = "cdn.example.com"
+    },
+    {
+      name  = "EMAIL_PROVIDER"
+      value = "mailgun"
+    },
+    {
+      name = "EMAIL_MAILGUN_CONFIG"
+      value = jsonencode({
+        "api_endpoint" : "https://api.mailgun.net",
+        "domain" : "mailgun.example.com",
+        "from_name" : "Mailgun App",
+        "from_email" : "help@example.com",
+        "reply_to" : "help@example.com",
+      })
+    },
+    {
+      name  = "REGISTER_CODE"
+      value = "1234"
+    },
+  ]
+  # Environment Variables (Secrets)
+  api_envvars_secret = [
+    {
+      name  = "COOKIE_SECRET"
+      value = "api-cookie-secret"
+    },
+    {
+      name  = "CSRF_SECRET"
+      value = "api-csrf-secret"
+    },
+    {
+      name  = "EMAIL_MAILGUN_API_KEY"
+      value = "api-mailgun-secret"
+    },
+    {
+      name  = "STRIPE_SECRET_KEY"
+      value = "api-stripe-secret"
+    },
+  ]
+}
+
 variable "api_domain" {
   description = "FQDN to host"
   default     = "api.example.com"
@@ -40,41 +95,6 @@ variable "api_count_min" {
 variable "api_count_max" {
   description = "Cloud Run Autoscaling Maximum Instances"
   default     = 10
-}
-
-variable "api_envvars_plain" {
-  description = "Environment Variables (Plain-Text)"
-  default = [
-    {
-      name  = "NODE_ENV"
-      value = "production"
-    },
-    {
-      name  = "CORS_ALLOWED_ORIGINS"
-      value = "https://example.com,https://www.example.com,https://cdn.example.com"
-    },
-    {
-      name  = "REGISTER_CODE"
-      value = "1234"
-    },
-    {
-      name  = "GCP_BUCKET_NAME"
-      value = "cdn.example.com"
-    },
-  ]
-}
-variable "api_envvars_secret" {
-  description = "Environment Variables (Secrets)"
-  default = [
-    {
-      name  = "COOKIE_SECRET"
-      value = "api-cookie-secret"
-    },
-    {
-      name  = "CSRF_SECRET"
-      value = "api-csrf-secret"
-    },
-  ]
 }
 
 # https://cloud.google.com/sql/docs/postgres/editions-intro

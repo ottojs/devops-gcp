@@ -88,14 +88,14 @@ resource "google_cloud_run_v2_service" "api" {
       }
       # User-provided key:values
       dynamic "env" {
-        for_each = var.api_envvars_plain
+        for_each = local.api_envvars_plain
         content {
           name  = env.value.name
           value = env.value.value
         }
       }
       dynamic "env" {
-        for_each = var.api_envvars_secret
+        for_each = local.api_envvars_secret
         content {
           name = env.value.name
           value_source {
