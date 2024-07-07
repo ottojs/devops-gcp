@@ -34,6 +34,16 @@ resource "google_storage_bucket" "cdn" {
     response_header = var.lb_cors_headers
     max_age_seconds = 3600
   }
+
+  lifecycle_rule {
+    action {
+      type = "Delete"
+    }
+    condition {
+      days_since_noncurrent_time = 3
+      no_age                     = true
+    }
+  }
 }
 
 # Legacy ACL, Only usable on Fine-Grained not on Uniform Access
