@@ -15,6 +15,42 @@ locals {
       value = "production"
     },
     {
+      name  = "DEBUG"
+      value = "app:*"
+    },
+    {
+      name  = "API_DOMAIN"
+      value = "api.example.com"
+    },
+    {
+      name  = "API_URI"
+      value = "https://api.example.com"
+    },
+    {
+      name  = "APP_DOMAIN"
+      value = "cdn.example.com"
+    },
+    {
+      name  = "APP_URI"
+      value = "https://cdn.example.com"
+    },
+    {
+      name  = "SQL_URI"
+      value = "GCP"
+    },
+    {
+      name  = "SQL_USERNAME"
+      value = google_sql_user.api_dbuser.name
+    },
+    {
+      name  = "SQL_DATABASE"
+      value = google_sql_database.apidb.name
+    },
+    {
+      name  = "SQL_CONNNAME"
+      value = google_sql_database_instance.apidb_instance.connection_name
+    },
+    {
       name  = "CORS_ALLOWED_ORIGINS"
       value = "https://example.com,https://www.example.com,https://cdn.example.com"
     },
@@ -37,12 +73,24 @@ locals {
       })
     },
     {
+      name  = "STRIPE_ONETIME_PRICE_ID"
+      value = "price_RANDOMID"
+    },
+    {
+      name  = "STRIPE_SUBSCRIPTION_PRICE_ID"
+      value = "price_RANDOMID"
+    },
+    {
       name  = "REGISTER_CODE"
       value = "1234"
     },
   ]
   # Environment Variables (Secrets)
   api_envvars_secret = [
+    {
+      name  = "SQL_PASSWORD"
+      value = google_secret_manager_secret.apidb.secret_id
+    },
     {
       name  = "COOKIE_SECRET"
       value = "api-cookie-secret"

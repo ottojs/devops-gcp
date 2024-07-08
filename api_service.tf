@@ -60,32 +60,6 @@ resource "google_cloud_run_v2_service" "api" {
         mount_path = "/cloudsql"
       }
 
-      env {
-        name  = "SQL_URI"
-        value = "GCP"
-      }
-      env {
-        name  = "SQL_USERNAME"
-        value = google_sql_user.api_dbuser.name
-      }
-      env {
-        name = "SQL_PASSWORD"
-        value_source {
-          secret_key_ref {
-            secret = google_secret_manager_secret.apidb.secret_id
-            # latest
-            version = google_secret_manager_secret_version.apidb.version
-          }
-        }
-      }
-      env {
-        name  = "SQL_DATABASE"
-        value = google_sql_database.apidb.name
-      }
-      env {
-        name  = "SQL_CONNNAME"
-        value = google_sql_database_instance.apidb_instance.connection_name
-      }
       # User-provided key:values
       dynamic "env" {
         for_each = local.api_envvars_plain
