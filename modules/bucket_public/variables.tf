@@ -15,13 +15,14 @@ variable "log_bucket_name" {
   description = "Name of logging bucket"
 }
 
+# If you are running a SPA (single-page-app, React, Angular, Vue) you should probably edit the
+# bucket settings to use "index.html" for both main page and error page instead of 404.html
 variable "page_index" {
-  description = "page_index"
+  description = "Filename to link to default page"
   default     = "index.html"
 }
-
 variable "page_404" {
-  description = "page_404"
+  description = "Filename to link to not found page"
   default     = "404.html"
 }
 
