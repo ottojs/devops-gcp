@@ -12,7 +12,7 @@ resource "random_password" "cookie" {
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/secret_manager_secret
 resource "google_secret_manager_secret" "cookie" {
-  secret_id = "api-cookie-secret"
+  secret_id = "tf-${var.name}-cookie-secret"
   labels = {
     creator = "tf"
   }
@@ -43,7 +43,7 @@ resource "random_password" "csrf" {
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/secret_manager_secret
 resource "google_secret_manager_secret" "csrf" {
-  secret_id = "api-csrf-secret"
+  secret_id = "tf-${var.name}-csrf-secret"
   labels = {
     creator = "tf"
   }

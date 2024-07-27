@@ -1,10 +1,18 @@
 
+# You can also use the domain for the name
+# replace(var.domain_api, ".", "-")
+#
+# We use locals for this so we can re-use this in envvars
+locals {
+  backend_name = "api"
+}
+
 module "backend_service" {
   source              = "./modules/backend_service"
   project_id          = var.project_id
   project_number      = var.project_number
   region              = var.region
-  name                = replace(var.domain_api, ".", "-")
+  name                = local.backend_name
   deletion_protection = var.deletion_protection
   domain              = var.domain_api
   container_registry  = var.project_id
@@ -106,22 +114,22 @@ locals {
     {
       # Generated
       name  = "COOKIE_SECRET"
-      value = "api-cookie-secret"
+      value = "tf-${local.backend_name}-cookie-secret"
     },
     {
       # Generated
       name  = "CSRF_SECRET"
-      value = "api-csrf-secret"
+      value = "tf-${local.backend_name}-csrf-secret"
     },
     {
       # Manual
       name  = "EMAIL_MAILGUN_API_KEY"
-      value = "api-mailgun-secret"
+      value = "${local.backend_name}-mailgun-secret"
     },
     {
       # Manual
       name  = "STRIPE_SECRET_KEY"
-      value = "api-stripe-secret"
+      value = "${local.backend_name}-stripe-secret"
     },
   ]
 }
