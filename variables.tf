@@ -2,8 +2,7 @@
 ##########################
 ##### IMPORTANT NOTE #####
 ##########################
-# To make upgrades easier, you should only change these "variables_" files.
-# If you need to make changes to the source files, please do so in a way
+# If you need to make changes to the source module files, please do so in a way
 # that allows for customizations in these variable files unless the changes
 # should be applied to all projects for reasons like security, performance, etc.
 
@@ -35,19 +34,19 @@ variable "domain_root" {
   default     = "example.com"
 }
 
-variable "ssl_policy_name" {
-  description = "TLS SSL Policy Name"
-  default     = "tf-ssl-policy-project"
+variable "domain_api" {
+  description = "API domain"
+  default     = "api.example.com"
 }
 
-variable "container_registry" {
-  description = "Name of container registry"
-  default     = "my-container-images"
+variable "domain_app" {
+  description = "App domain"
+  default     = "app.example.com"
 }
 
-variable "pipeline_build_container" {
+variable "build_container" {
   description = "Name of container image to use when building"
-  default     = "node:20.15.0-alpine3.20"
+  default     = "node:20.16.0-alpine3.20"
 }
 
 # WARNING: If you are deploying this for real applications, set this to true
@@ -55,19 +54,4 @@ variable "pipeline_build_container" {
 variable "deletion_protection" {
   description = "Enable deletion protection on all resources?"
   default     = true
-}
-
-variable "repo_provider" {
-  description = "Name of repo host"
-  default     = "github"
-}
-
-variable "repo_url_prefix" {
-  description = "Prefix for provider"
-  default     = "https://github.com"
-}
-
-variable "repo_branch" {
-  description = "Name of branch to use when building"
-  default     = "main"
 }

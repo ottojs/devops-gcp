@@ -1,7 +1,7 @@
 
 # Service Account
 resource "google_service_account" "backend" {
-  account_id   = "tf-${var.name}-service-account"
+  account_id   = "tf-${var.name}-srvacc"
   display_name = "Service Account"
 }
 
