@@ -5,3 +5,6 @@ node_modules
 # GCP Credential Key File (Usually)
 # Ignoring it because better safe than sorry
 *.json
+
+# macOS
+.DS_Store
