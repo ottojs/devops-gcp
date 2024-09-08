@@ -1,5 +1,6 @@
 
 terraform {
+  required_version = ">= 1.8"
   required_providers {
     random = {
       # https://registry.terraform.io/providers/hashicorp/random/latest/docs
@@ -9,7 +10,7 @@ terraform {
     google = {
       # https://registry.terraform.io/providers/hashicorp/google/latest/docs
       source  = "hashicorp/google"
-      version = "5.40.0"
+      version = "6.1.0"
     }
   }
 }
