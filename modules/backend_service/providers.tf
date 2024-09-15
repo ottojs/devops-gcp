@@ -5,12 +5,12 @@ terraform {
     random = {
       # https://registry.terraform.io/providers/hashicorp/random/latest/docs
       source  = "hashicorp/random"
-      version = "3.6.2"
+      version = "3.6.3"
     }
     google = {
       # https://registry.terraform.io/providers/hashicorp/google/latest/docs
       source  = "hashicorp/google"
-      version = "6.1.0"
+      version = "6.2.0"
     }
   }
 }
