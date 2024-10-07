@@ -32,7 +32,7 @@ resource "google_storage_bucket" "private" {
     }
     condition {
       days_since_noncurrent_time = 3
-      no_age                     = true
+      send_age_if_zero           = false
     }
   }
 }
