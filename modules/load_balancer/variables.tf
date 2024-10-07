@@ -5,10 +5,12 @@ variable "project_id" {
 
 variable "name" {
   description = "Name of load balancer"
+  type        = string
 }
 
 variable "hosts" {
   description = "Domains to point to service (generates certificates too)"
+  type        = list(string)
 }
 
 variable "bucket_id" {
@@ -17,24 +19,29 @@ variable "bucket_id" {
 
 variable "bucket_name" {
   description = "Bucket name to send traffic to"
+  type        = string
 }
 
 variable "cdn_enabled" {
   description = "Boolean that determines if CDN is enabled"
+  type        = bool
 }
 
 variable "redirect_host" {
   description = "redirect_host"
+  type        = string
   default     = "www.google.com"
 }
 
 variable "redirect_path" {
   description = "redirect_path"
+  type        = string
   default     = "/"
 }
 
 variable "content_security_policy" {
   description = "Allow bucket delete with files inside"
+  type        = list(string)
   default = [
     "default-src 'none'",
     "base-uri 'self'",
