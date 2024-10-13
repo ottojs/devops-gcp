@@ -46,12 +46,32 @@ resource "google_sql_database_instance" "db_instance" {
 
     # https://cloud.google.com/sql/docs/postgres/flags#terraform
     database_flags {
+      name  = "cloudsql.iam_authentication"
+      value = "on"
+    }
+    database_flags {
+      name  = "log_checkpoints"
+      value = "on"
+    }
+    database_flags {
+      name  = "log_connections"
+      value = "on"
+    }
+    database_flags {
+      name  = "log_disconnections"
+      value = "on"
+    }
+    database_flags {
+      name  = "log_lock_waits"
+      value = "on"
+    }
+    database_flags {
       name  = "log_min_error_statement"
       value = "error"
     }
     database_flags {
-      name  = "cloudsql.iam_authentication"
-      value = "on"
+      name  = "log_temp_files"
+      value = "0"
     }
 
     backup_configuration {
@@ -70,13 +90,15 @@ resource "google_sql_database_instance" "db_instance" {
       # This gives a public IP
       # Yes, this seems like a bad idea but GCP recommends it
       # We'll find an alternative way to access on VPC via VPN
+      # TODO: Private IP
       ipv4_enabled = true
       # private_network {}
       # TODO: Enable Mutual-Client TLS/SSL
       # https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration
       #require_ssl = true (deprecated)
       ssl_mode = "ENCRYPTED_ONLY" # SSL Only
-      # ssl_mode = "TRUSTED_CLIENT_CERTIFICATE_REQUIRED" # Client Cert
+      # TODO: Client Cert Auth
+      # ssl_mode = "TRUSTED_CLIENT_CERTIFICATE_REQUIRED"
     }
 
     maintenance_window {
