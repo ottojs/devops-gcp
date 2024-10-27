@@ -1,8 +1,4 @@
 
-variable "project_id" {
-  description = "project_id"
-}
-
 variable "name" {
   description = "Name of load balancer"
   type        = string

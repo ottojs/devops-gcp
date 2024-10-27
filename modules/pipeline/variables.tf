@@ -15,10 +15,6 @@ variable "region" {
   default     = "us-central1"
 }
 
-variable "name" {
-  description = "Name of pipeline"
-}
-
 variable "repo_provider" {
   description = "Name of repo host"
   type        = string
@@ -47,14 +43,16 @@ variable "repo_branch" {
   default     = "main"
 }
 
-variable "container_registry" {
-  description = "Name of container registry"
-}
+
+# variable "container_registry" {
+#   description = "Name of container registry"
+#   type = string
+# }
 
 variable "build_container" {
   description = "Name of container image to use when building"
   type        = string
-  default     = "node:20.16.0-alpine3.20"
+  default     = "node:22.10.0-alpine3.20"
 }
 
 variable "machine_type" {

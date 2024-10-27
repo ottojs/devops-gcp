@@ -54,7 +54,7 @@ variable "domain_app" {
 variable "build_container" {
   description = "Name of container image to use when building"
   type        = string
-  default     = "node:20.16.0-alpine3.20"
+  default     = "node:22.10.0-alpine3.20"
 }
 
 # WARNING: If you are deploying this for real applications, set this to true
