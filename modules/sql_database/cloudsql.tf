@@ -96,6 +96,10 @@ resource "google_sql_database_instance" "db_instance" {
       # TODO: Enable Mutual-Client TLS/SSL
       # https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration
       #require_ssl = true (deprecated)
+      # authorized_networks {
+      #   value = "10.0.0.0/16"
+      #   name  = "internal"
+      # }
       ssl_mode = "ENCRYPTED_ONLY" # SSL Only
       # TODO: Client Cert Auth
       # ssl_mode = "TRUSTED_CLIENT_CERTIFICATE_REQUIRED"
