@@ -5,10 +5,10 @@ module "backend_database" {
   deletion_protection = var.deletion_protection
 
   # Only PostgreSQL is supported
-  # v16.x is the newest stable version as of writing
+  # v17.x is the newest stable version as of writing
   # You must supply a value here to ensure you're aware of major version upgrades
   # https://cloud.google.com/sql/docs/postgres/db-versions
-  engine = "POSTGRES_16"
+  engine = "POSTGRES_17"
 
   # Optional and used for reducing cost
   # Probably delete this section if you're doing a production deploy
