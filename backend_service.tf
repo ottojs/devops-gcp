@@ -15,7 +15,6 @@ module "backend_service" {
   name                = local.backend_name
   deletion_protection = var.deletion_protection
   domain              = var.domain_api
-  container_registry  = var.project_id
   container_image     = local.pipeline_backend_repo_name
   envvars_plain       = local.envvars_plain
   envvars_secret      = local.envvars_secret

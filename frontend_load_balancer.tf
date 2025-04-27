@@ -1,7 +1,6 @@
 
 module "frontend_load_balancer" {
   source      = "./modules/load_balancer"
-  project_id  = var.project_id
   name        = "frontend"
   hosts       = [var.domain_app]
   bucket_id   = module.frontend_bucket.id

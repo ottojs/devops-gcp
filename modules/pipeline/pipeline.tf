@@ -103,8 +103,8 @@ resource "google_cloudbuild_trigger" "pipeline" {
     # Reason why: We want to push built images before deploy in case deploy fails
     # artifacts {
     #   images = [
-    #     "${var.region}-docker.pkg.dev/${var.project_id}/${var.container_registry}/${var.repo_name}:$SHORT_SHA",
-    #     "${var.region}-docker.pkg.dev/${var.project_id}/${var.container_registry}/${var.repo_name}:latest",
+    #     "${var.region}-docker.pkg.dev/${var.project_id}/${var.project_id}/${var.repo_name}:$SHORT_SHA",
+    #     "${var.region}-docker.pkg.dev/${var.project_id}/${var.project_id}/${var.repo_name}:latest",
     #   ]
     # }
 

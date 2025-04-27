@@ -1,4 +1,9 @@
 
+# variable "name" {
+#   description = "name"
+#   type        = string
+# }
+
 variable "project_id" {
   description = "project_id"
   type        = string
@@ -42,12 +47,6 @@ variable "repo_branch" {
   type        = string
   default     = "main"
 }
-
-
-# variable "container_registry" {
-#   description = "Name of container registry"
-#   type = string
-# }
 
 variable "build_container" {
   description = "Name of container image to use when building"

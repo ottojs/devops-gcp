@@ -7,6 +7,7 @@
 # https://cloud.google.com/cdn/docs/caching
 
 # https://console.cloud.google.com/storage/browser
+#
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket
 resource "google_storage_bucket" "public" {
   project                     = var.project_id
@@ -59,6 +60,7 @@ resource "google_storage_bucket" "public" {
 #
 # We use Uniform Access so we'll use this version instead
 # https://cloud.google.com/storage/docs/uniform-bucket-level-access
+#
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_iam
 resource "google_storage_bucket_iam_member" "public_acl_uniform" {
   bucket = google_storage_bucket.public.id

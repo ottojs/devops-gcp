@@ -5,6 +5,7 @@
 
 # TLS SSL Cipher Policy
 # https://console.cloud.google.com/net-services/ssl-policies/list
+#
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_ssl_policy
 # See Also: google_compute_region_ssl_policy
 resource "google_compute_ssl_policy" "lb" {
@@ -23,6 +24,7 @@ resource "google_compute_ssl_policy" "lb" {
 
 # TLS SSL Certificate
 # https://console.cloud.google.com/security/ccm/list/lbCertificates
+#
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_managed_ssl_certificate
 # See Also: google_compute_region_ssl_certificate
 resource "google_compute_managed_ssl_certificate" "lb" {

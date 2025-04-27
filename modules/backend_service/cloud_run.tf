@@ -43,7 +43,7 @@ resource "google_cloud_run_v2_service" "backend" {
     }
 
     containers {
-      image = "${var.region}-docker.pkg.dev/${var.project_id}/${var.container_registry}/${var.container_image}:latest"
+      image = "${var.region}-docker.pkg.dev/${var.project_id}/${var.project_id}/${var.container_image}:latest"
       #args       = []
       #command    = []
       #depends_on = []

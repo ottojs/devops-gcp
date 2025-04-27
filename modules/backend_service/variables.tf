@@ -53,11 +53,6 @@ variable "db_instance" {
   })
 }
 
-variable "container_registry" {
-  description = "Name of container registry to pull image from"
-  type        = string
-}
-
 variable "container_image" {
   description = "Name of container image to use"
   type        = string

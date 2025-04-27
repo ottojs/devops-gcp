@@ -22,6 +22,7 @@ resource "google_sql_database" "db" {
 }
 
 # https://cloud.google.com/sql/docs/postgres/connect-overview
+#
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance
 resource "google_sql_database_instance" "db_instance" {
   name                = "tf-postgresql-${var.name}-instance"

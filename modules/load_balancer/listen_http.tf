@@ -15,11 +15,13 @@ resource "google_compute_url_map" "http" {
   }
 }
 
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_target_http_proxy
 resource "google_compute_target_http_proxy" "http" {
   name    = "tf-lb-${var.name}-http-target"
   url_map = google_compute_url_map.http.id
 }
 
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_forwarding_rule
 resource "google_compute_global_forwarding_rule" "http" {
   name                  = "tf-lb-${var.name}-http-forwarding-rule"
   ip_address            = google_compute_global_address.net_ipv4_a.id

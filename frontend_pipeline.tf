@@ -6,13 +6,12 @@ module "frontend_pipeline" {
   project_id     = var.project_id
   project_number = var.project_number
   ###
-  name               = "pipeline-frontend"
-  repo_provider      = "github-ottojs"
-  repo_owner         = "ottojs"
-  repo_name          = "frontend-react"
-  container_registry = var.project_id
-  build_container    = var.build_container
-  timeout            = "1800s" # 30min
+  #name               = "pipeline-frontend"
+  repo_provider   = "github-ottojs"
+  repo_owner      = "ottojs"
+  repo_name       = "frontend-react"
+  build_container = var.build_container
+  timeout         = "1800s" # 30min
   steps = [
     {
       id         = "config"
